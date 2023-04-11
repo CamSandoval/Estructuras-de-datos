@@ -54,7 +54,6 @@ class Arrays {
         return this.length;
     }
     shift(){
-        // Tu código aquí 👈
         if (this.length == 0) return undefined;
         const item = this.data[0];
         for (let i = 0; i < this.length -1;i++){
