@@ -58,6 +58,23 @@ class SinglyLinkedList{
     }
 
     //Reto: crear un metodo remove el cual sea capaz de quitar un metodo de la lista y si es llegado el caso reasignarlo en su pocision ideal
+    remove(value){
+        // const pointer = this.getIndex(value);
+        // if( pointer >= this.tail.value){
+        //     return this.append(value);
+        // }
+        
+        const firstPointer = this.getIndex(value-2);
+        const deletedNode = this.getIndex(value-1);
+        const holdingPointer = deletedNode.next;
+        firstPointer.next= holdingPointer;
+
+        this.length--;
+        return this;
+    }
 };
 
 let myLinkedList = new SinglyLinkedList(1);
+myLinkedList.append(2);
+myLinkedList.append(3);
+myLinkedList.append(4);
