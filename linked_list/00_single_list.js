@@ -31,24 +31,32 @@ class SinglyLinkedList{
         return this;
     }
 
-    getIndex(index){
-        let counter = 0;
-        let currentNode = this.head;
-
-        while(counter != index){
-            currentNode = currentNode.next;
-            counter++
+    getObjectOfIndex(index){
+        if(index >= this.length){
+            return undefined;
         }
-        return currentNode;
+            let counter = 0;
+            let currentNode = this.head;
+
+            while(counter != index){
+                currentNode = currentNode.next;
+                counter++
+            }
+            return currentNode;
+            
+        
     }
     insert(index,value){
 
         if(index >= this.length){
             return this.append(value)
         }
+        if(index < this.head.value){
+            return this.prepend(value);
+        }
 
         const newNode = new Node(value);
-        const firstPointer = this.getIndex(index -1);
+        const firstPointer = this.getObjectOfIndex(index -1);
         const holdingPointer = firstPointer.next;
         firstPointer.next= newNode;
         newNode.next = holdingPointer;
@@ -58,19 +66,24 @@ class SinglyLinkedList{
     }
 
     //Reto: crear un metodo remove el cual sea capaz de quitar un metodo de la lista y si es llegado el caso reasignarlo en su pocision ideal
-    remove(value){
-        // const pointer = this.getIndex(value);
-        // if( pointer >= this.tail.value){
-        //     return this.append(value);
-        // }
-        
-        const firstPointer = this.getIndex(value-2);
-        const deletedNode = this.getIndex(value-1);
-        const holdingPointer = deletedNode.next;
-        firstPointer.next= holdingPointer;
+    remove(index){
+        const deletedNode = this.getObjectOfIndex(index);
+        if(deletedNode == this.head){
+            const newHead = this.head.next;
+            this.head = newHead;
+            this.length--;
+            return this;
+        }else if(deletedNode == undefined){
+            console.warn('This node is not avalible in the list');
+            return this;
+        }else{
+            const firstPointer = this.getObjectOfIndex(index-1);
+            const holdingPointer = deletedNode.next;
+            firstPointer.next= holdingPointer;
 
-        this.length--;
-        return this;
+            this.length--;
+            return this;
+        }
     }
 };
 
