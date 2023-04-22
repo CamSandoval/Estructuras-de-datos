@@ -1,5 +1,5 @@
-
-
+//Una linked list en una estrusctura la cual es capaz de recibir nuevos items o nodos e ir uniendolos a la estructura de una forma organizada.
+//Dentro de esta veremos que la cola o tail tiene un valor llamdo next el cual devera ser null, ya que est ee sel ultimo elemento de nuestra lista
 
 class Node{
     constructor(value) {

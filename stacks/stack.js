@@ -1,4 +1,4 @@
-
+//Un stack es una estructura de tipo pila, dentro de la cual la logica solo debe permitir alojar elementos al final de esta y elimnar elemetos del final siguiendo una metodologia LIFO(Last In First Out)
 
 class Node {
     constructor(value) {
